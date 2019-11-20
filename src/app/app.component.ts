@@ -6,12 +6,7 @@ import { Component } from '@angular/core';
     <h1>Curso de Angular</h1>
     <span class="titulo fuente">EDteam</span>
   `,
-  styles: [
-    'h1 {font-weight: bold}',
-    'h1 {font-size: 10px}',
-    '.titulo {color: red;}',
-    '.fuente {font-size: 20px}'
-  ]
+  styleUrls: ['app.component.css']
 })
 export class AppComponent {
   title = 'edteam-curso-angular';
