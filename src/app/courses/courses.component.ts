@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
   titulo: string = 'Lista de Cursos (Interpolacion)';
+  anchoImagen: string = '40px';
   cursos: any[] = [
     {
       id: 1,
