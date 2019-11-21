@@ -1,1 +1,31 @@
-<p>courses works!</p>
+<div class="card">
+    <div class="card-header">
+        {{titulo}}
+    </div>
+    <div class="card-body">
+        <div>
+            <table class="table">
+                <thead>
+                    <th>Logo</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Precio</th>
+                    <th>Rating</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{cursos[0].imageUrl}}</td>
+                        <td>{{cursos[0].name}}</td>
+                        <td>{{cursos[0].description}}</td>
+                        <td>{{cursos[0].startDate}}</td>
+                        <td>{{cursos[0].price}}</td>
+                        <td>{{cursos[0].rating}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
