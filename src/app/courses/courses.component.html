@@ -24,7 +24,17 @@
                         <td>{{cursos[0].startDate}}</td>
                         <td>{{cursos[0].price}}</td>
                         <td>{{cursos[0].rating}}</td>
-                        <td></td>
+                        <td>
+                            <span style="float:left;" (click)="editarCurso(cursos[0])"
+                                (mouseover) ="onMouseOver($event)"
+                                (dblclick) ="onDoubleclick($event)"
+                            >
+                                <i class="fa fa-edit"></i>
+                            </span>
+                            <span style="float:right;" (click)="eliminarCurso(cursos[0])">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -35,7 +45,14 @@
                         <td>{{cursos[1].startDate}}</td>
                         <td>{{cursos[1].price}}</td>
                         <td>{{cursos[1].rating}}</td>
-                        <td></td>
+                        <td>
+                            <span style="float:left;" (click)="editarCurso(cursos[1])">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                            <span style="float:right;" (click)="eliminarCurso(cursos[1])">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td>{{cursos[2].imageUrl}}</td>
@@ -44,7 +61,14 @@
                         <td>{{cursos[2].startDate}}</td>
                         <td>{{cursos[2].price}}</td>
                         <td>{{cursos[2].rating}}</td>
-                        <td></td>
+                        <td>
+                            <span style="float:left;" (click)="editarCurso(cursos[2])">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                            <span style="float:right;" (click)="eliminarCurso(cursos[2])">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
