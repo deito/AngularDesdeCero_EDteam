@@ -38,7 +38,7 @@ export class CoursesComponent implements OnInit {
     }
   ];
   constructor() { 
-    this.eliminarCursos();
+    //this.eliminarCursos();
   }
 
   ngOnInit() {
