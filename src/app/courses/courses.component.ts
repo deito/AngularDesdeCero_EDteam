@@ -37,9 +37,17 @@ export class CoursesComponent implements OnInit {
       imageUrl: 'assets/images/angular.png'
     }
   ];
-  constructor() { }
+  constructor() { 
+    this.eliminarCursos();
+  }
 
   ngOnInit() {
+  }
+
+  eliminarCursos(){
+    setTimeout(()=> {
+      this.cursos = [];
+    }, 5000);
   }
 
   editarCurso(curso: any){
