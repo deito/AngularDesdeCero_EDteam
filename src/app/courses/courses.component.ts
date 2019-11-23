@@ -50,20 +50,12 @@ export class CoursesComponent implements OnInit {
     }, 5000);
   }
 
-  editarCurso(curso: any){
-    console.log('Edit, ', curso);
+  onEditCurso(event: any){
+    console.log('[Courses] Edit', event);
   }
 
-  eliminarCurso(curso: any){
-    console.log('Eliminar, ', curso);
-  }
-
-  onMouseOver(event: any){
-    console.log('Mouse Over', event);
-  }
-
-  onDoubleclick(event: any){
-    console.log('Double Click', event);
+  onDeleteCurso(event: any){
+    console.log('[Courses] Delete', event);
   }
 
 }

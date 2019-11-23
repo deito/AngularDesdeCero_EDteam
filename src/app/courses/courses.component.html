@@ -31,15 +31,10 @@
                         <td>{{curso.price | currency: 'Bs'}}</td>
                         <td>{{curso.rating}}</td>
                         <td>
-                            <span style="float:left;" (click)="editarCurso(curso)"
-                                (mouseover) ="onMouseOver($event)"
-                                (dblclick) ="onDoubleclick($event)"
-                            >
-                                <i class="fa fa-edit"></i>
-                            </span>
-                            <span style="float:right;" (click)="eliminarCurso(curso)">
-                                <i class="fa fa-trash"></i>
-                            </span>
+                            <ed-course-action [curso]="curso"
+                            (edit)="onEditCurso($event)"
+                            (delete)="onDeleteCurso($event)">
+                            </ed-course-action>
                         </td>
                     </tr>
 
