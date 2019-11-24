@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Curso } from '../curso';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ed-courses',
@@ -37,7 +39,7 @@ export class CoursesComponent implements OnInit {
       imageUrl: 'assets/images/angular.png'
     }
   ];
-  constructor() { 
+  constructor(private router: Router) { 
     //this.eliminarCursos();
   }
 
@@ -50,12 +52,16 @@ export class CoursesComponent implements OnInit {
     }, 5000);
   }
 
-  onEditCurso(event: any){
+  onEditCurso(curso: Curso){``
     console.log('[Courses] Edit', event);
+    this.router.navigate([`course/${curso.id}`]);
   }
 
-  onDeleteCurso(event: any){
+  onDeleteCurso(curso: Curso){
     console.log('[Courses] Delete', event);
+    this.cursos = this.cursos.filter((c: Curso)=>{
+      return c.id !== curso.id
+    });
   }
 
 }

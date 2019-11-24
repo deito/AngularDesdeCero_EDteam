@@ -9,6 +9,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseActionComponent } from './course-action/course-action.component';
+import { CourseEditComponent } from './course-edit/course-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CourseActionComponent } from './course-action/course-action.component';
     SidenavComponent,
     DashboardComponent,
     CoursesComponent,
-    CourseActionComponent
+    CourseActionComponent,
+    CourseEditComponent
   ],
   imports: [
     BrowserModule,
