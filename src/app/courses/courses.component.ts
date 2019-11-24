@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Curso } from '../curso';
 import { Router } from '@angular/router';
 
@@ -7,9 +7,14 @@ import { Router } from '@angular/router';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit, AfterViewInit {
   titulo: string = 'Lista de Cursos (Interpolacion)';
   anchoImagen: string = '40px';
+
+  @ViewChild('filtro',{static: false})
+  filtro: ElementRef;
+  textoFiltro: string = '';
+
   cursos: any[] = [
     {
       id: 1,
@@ -44,6 +49,10 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(){
+    this.filtro.nativeElement.value = 'Angular';
   }
 
   eliminarCursos(){
