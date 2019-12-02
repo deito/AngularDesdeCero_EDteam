@@ -20,7 +20,7 @@ export class CoursesComponent implements OnInit, AfterViewInit {
     console.log('textoFiltro',  t);
     this._textoFiltro = t;
     // filtrar los cursos
-    this.cursos = t? this.filtrarCursos(t): this.cursosService.getCourses();
+    // this.cursos = t? this.filtrarCursos(t): this.cursosService.getCourses();
   }
 
   get textoFiltro(){
@@ -34,14 +34,14 @@ export class CoursesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.cursos = this.cursosService.getCourses();
-    setTimeout(() => {
-      this.textoFiltro = 'Angular';
-    }, 1000);
+    //this.cursos = this.cursosService.getCourses();
+    this.cursosService.getCursos()
+      .subscribe((cursos: Curso[])=> this.cursos = cursos);
+
   }
 
   ngAfterViewInit(){
-    this.filtro.nativeElement.value = 'Angular';
+    // this.filtro.nativeElement.value = 'Angular';
   }
 
   filtrarCursos(texto: string){
