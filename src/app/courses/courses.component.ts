@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angula
 import { Curso } from '../curso';
 import { Router } from '@angular/router';
 import { CoursesService } from '../courses.service';
+import { catchError, tap } from 'rxjs/operators';
+import { of, EMPTY } from 'rxjs';
 
 @Component({
   selector: 'ed-courses',
@@ -29,6 +31,8 @@ export class CoursesComponent implements OnInit, AfterViewInit {
 
 
   cursos: Curso[];
+  mensajeError: string;
+
   constructor(private router: Router, private cursosService: CoursesService) { 
     //this.eliminarCursos();
   }
@@ -36,6 +40,14 @@ export class CoursesComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     //this.cursos = this.cursosService.getCourses();
     this.cursosService.getCursos()
+    .pipe(
+      tap(cursos => console.log('Cursos', cursos)),
+      catchError(error => {
+        this.mensajeError = error;
+        // catch and replace
+        return EMPTY;
+      })
+    )
       .subscribe((cursos: Curso[])=> this.cursos = cursos);
 
   }

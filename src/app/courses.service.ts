@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Curso } from './curso';
 import { COURSES } from './data/courses';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+import { Observable, throwError } from 'rxjs';
+import { catchError }  from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,21 @@ export class CoursesService {
 
 
   getCursos(): Observable<Curso[]>{
-    return this.httpClient.get<Curso[]>('assets/api/courses/courses.json')
+    return this.httpClient.get<Curso[]>('assets/api/courses/coursess.json')
+    .pipe(
+      catchError(this.manejarError)
+    )
+  }
+
+  manejarError(error: HttpErrorResponse){
+    if(error.error instanceof ErrorEvent){
+      console.log('Error de Cliente', error.error.message);
+    } else  {
+      //  Error en el lado del servidor
+      console.log('Error Status', error.status);
+      console.log('Error:', error.error);
+    }
+    // catch and rethrow
+    return throwError('Hubo un problema al obtener los datos. Intente mas tarde')
   }
 }

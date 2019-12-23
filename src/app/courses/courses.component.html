@@ -3,6 +3,9 @@
         <li *ngFor="let curso of cursos">{{curso.name}}</li>
     </ul>
 </div>
+<pre>
+    {{cursos | json}}
+</pre>
 
 <div class="card">
     <div class="card-header">
@@ -49,7 +52,10 @@
             </table>
         </div>
     </div>
-    <div *ngIf="!cursos || cursos.length === 0" class="alert alert-info" role="alert">
+    <!-- <div *ngIf="!cursos || cursos.length === 0" class="alert alert-info" role="alert">
         No exsisten cursos disponibles. Intente mas tarde
-        </div>
+    </div> -->
+    <div *ngIf="mensajeError" class="alert alert-danger" role="alert">
+        {{mensajeError}}
+      </div>
 </div>
