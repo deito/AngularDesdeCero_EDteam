@@ -22,6 +22,7 @@ export class CoursesComponent implements OnInit, AfterViewInit {
     console.log('textoFiltro',  t);
     this._textoFiltro = t;
     // filtrar los cursos
+    this.filtrarCursos(t);
     // this.cursos = t? this.filtrarCursos(t): this.cursosService.getCourses();
   }
 
@@ -29,8 +30,8 @@ export class CoursesComponent implements OnInit, AfterViewInit {
     return this._textoFiltro;
   }
 
-
   cursos: Curso[];
+  cursosFiltrados: Curso[];
   mensajeError: string;
 
   constructor(private router: Router, private cursosService: CoursesService) { 
@@ -38,7 +39,10 @@ export class CoursesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    //this.cursos = this.cursosService.getCourses();
+    this.getCursos();
+  }
+
+  getCursos(){
     this.cursosService.getCursos()
     .pipe(
       tap(cursos => console.log('Cursos', cursos)),
@@ -48,8 +52,10 @@ export class CoursesComponent implements OnInit, AfterViewInit {
         return EMPTY;
       })
     )
-      .subscribe((cursos: Curso[])=> this.cursos = cursos);
-
+      .subscribe((cursos: Curso[])=> {
+        this.cursos = cursos;
+        this.cursosFiltrados = cursos;
+      });
   }
 
   ngAfterViewInit(){
@@ -57,7 +63,8 @@ export class CoursesComponent implements OnInit, AfterViewInit {
   }
 
   filtrarCursos(texto: string){
-    return this.cursos.filter((curso: Curso)=> curso.name.toLowerCase().indexOf(texto.toLowerCase())>=0);
+    this.cursosFiltrados = this.cursos.filter(
+      (curso: Curso)=> curso.name.toLowerCase().indexOf(texto.toLowerCase())>=0);
   }
 
   eliminarCursos(){

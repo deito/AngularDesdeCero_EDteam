@@ -19,7 +19,7 @@ export class CoursesService {
 
 
   getCursos(): Observable<Curso[]>{
-    return this.httpClient.get<Curso[]>('assets/api/courses/coursess.json')
+    return this.httpClient.get<Curso[]>('assets/api/courses/courses.json')
     .pipe(
       catchError(this.manejarError)
     )
